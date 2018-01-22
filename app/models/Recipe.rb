@@ -1,5 +1,5 @@
 class Recipe
-  attr_accessor :ingredients, :allergens, :recipecards
+  attr_accessor :ingredients, :recipecards
   attr_reader :name
 
   @@all = []
