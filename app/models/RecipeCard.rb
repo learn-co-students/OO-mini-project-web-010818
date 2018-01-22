@@ -16,20 +16,5 @@ class RecipeCard
     @@all
   end
 
-  def users
-    self.user
-  end
-
-  def recipes
-    self.recipe
-  end
-
-  def dates
-    self.date
-  end
-
-  def ratings
-    self.rating
-  end
 
 end
