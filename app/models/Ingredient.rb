@@ -26,15 +26,7 @@ class Ingredient
       end
     end
 
-    most_common = nil
-    curr_count = 0
-    frequency.each do |ingredient, count|
-      if count > curr_count
-        most_common = ingredient
-        curr_count = count
-      end
-    end
-    most_common
+    frequency.max_by { |allergen, count| count}[0]
   end
 
 end

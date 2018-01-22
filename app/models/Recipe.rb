@@ -34,16 +34,7 @@ class Recipe
       end
     end
 
-    most_popular = nil
-    curr_count = 0
-    frequency.each do |recipe, count|
-      if count > curr_count
-        most_popular = recipe
-        curr_count = count
-      end
-    end
-
-    most_popular
+    frequency.max_by { |recipe, count| count}[0]
   end
 
 #users should return the user instances who have recipe cards with this recipe
