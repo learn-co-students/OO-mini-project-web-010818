@@ -12,24 +12,28 @@ class Recipe
     @@all << self
   end
 
+# Recipe.all should return all of the recipe instances
   def self.all
     @@all
   end
 
+# Recipe.most_popular should return the recipe instance with the highest number of users (the recipe that has the most recipe cards)
   def self.most_popular
-    recipes = RecipeCard.all.map {|rc| rc.recipe}
-    counts = recipes.each_with_object(Hash.new(0)) { |recipe,counts| counts[recipe] += 1 }
-    most_popular = counts.sort {|a,b| b[1]<=>a[1]}.first.first
+		counts = Hash.new 0
+    RecipeCard.all.each do |recipe_card|
+      counts[recipe_card.recipe] += 1
+    end
+    counts.max_by {|rec, counts| counts}[0]
   end
 
   def users
     recipe_cards = RecipeCard.all.select {|recipe_card| recipe_card.recipe == self}
-    recipe_cards.map {|recipe_card| recipe_card.user.name}
+    recipe_cards.collect {|recipe_card| recipe_card.user.name}
   end
 
   def allergens
     allergens = Allergen.all.select{|a| self.ingredients.include?(a.ingredient)}
-    allergens.map{|a| a.ingredient.name}
+    allergens.collect{|a| a.ingredient.name}
   end
 
   def add_ingredients(ingredients)
@@ -45,6 +49,6 @@ class Recipe
   end
 
   def ingredients
-    recipe_ingredients.map {|recipe_ingredient| recipe_ingredient.ingredient}
+    recipe_ingredients.collect {|recipe_ingredient| recipe_ingredient.ingredient}
   end
 end
