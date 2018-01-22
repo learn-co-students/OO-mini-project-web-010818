@@ -37,7 +37,6 @@ class Recipe
       myIngredients = myRI.map {|ri|ri.ingredient}
       allergenIngredient = Allergen.all.map {|a|a.ingredient}
       myIngredients.select {|myIn| allergenIngredient.include?(myIn)}
-      end
     end
 
     def add_ingredients(ingredientArr) #ok

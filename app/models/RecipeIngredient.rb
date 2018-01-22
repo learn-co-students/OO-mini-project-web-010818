@@ -14,12 +14,6 @@ class RecipeIngredient
     @@all
   end
 
-  def ingredients
-    self.ingredient
-  end
 
-  def recipes
-    self.recipe
-  end
 
 end
