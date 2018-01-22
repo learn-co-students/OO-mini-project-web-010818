@@ -34,9 +34,10 @@ class User
 
 #top_three_recipes should return the top three highest rated recipes for this user.
   def top_three_recipes
-    sorted_recipecards = self.recipecards.sort_by { |recipecard| recipecard.rating}
-    top_three_recipecards = sorted_recipecards.last(3)
-    top_three_recipecards.map do |recipecard|
+    top_recipecards = self.recipecards.max_by(3) do |recipecard|
+      recipecard.rating
+    end
+    top_recipecards.map do |recipecard|
       recipecard.recipe
     end
   end

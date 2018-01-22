@@ -24,7 +24,6 @@ class Recipe
 #most_popular should return the recipe instance with the highest number of users (the recipe that has the most recipecards)
   def self.most_popular
     all_recipes = RecipeCard.all.map { |recipecard| recipecard.recipe }
-
     frequency = {}
     all_recipes.each do |recipe|
       if frequency.include?(recipe)
@@ -33,8 +32,7 @@ class Recipe
         frequency[recipe] = 1
       end
     end
-
-    frequency.max_by { |recipe, count| count}[0]
+    frequency.max_by(1) { |recipe, count| count}
   end
 
 #users should return the user instances who have recipe cards with this recipe

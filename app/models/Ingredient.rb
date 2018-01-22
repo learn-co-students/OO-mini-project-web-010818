@@ -26,7 +26,7 @@ class Ingredient
       end
     end
 
-    frequency.max_by { |allergen, count| count}[0]
+    frequency.max_by(1) { |allergen, count| count}
   end
 
 end
